@@ -1,3 +1,4 @@
+/* istanbul ignore file */
 import { App } from './app';
 import 'dotenv/config';
 

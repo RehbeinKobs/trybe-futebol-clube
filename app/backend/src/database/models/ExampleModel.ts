@@ -1,3 +1,4 @@
+/* istanbul ignore file */
 import { Model } from 'sequelize';
 import db from '.';
 // import OtherModel from './OtherModel';

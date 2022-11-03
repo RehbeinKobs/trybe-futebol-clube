@@ -1,4 +1,8 @@
+/* istanbul ignore file */
 import * as express from 'express';
+import * as bodyParser from 'body-parser';
+import UserController from './controllers/User.controller';
+import handleError from './middlewares/errorHandler';
 
 class App {
   public app: express.Express;
@@ -21,7 +25,13 @@ class App {
     };
 
     this.app.use(express.json());
+    this.app.use(bodyParser.json());
     this.app.use(accessControl);
+
+    this.app.post('/login', UserController.login);
+    this.app.get('/login/validate', UserController.loginValidate);
+
+    this.app.use(handleError);
   }
 
   public start(PORT: string | number):void {
