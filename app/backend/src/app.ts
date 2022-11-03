@@ -2,6 +2,7 @@
 import * as express from 'express';
 import * as bodyParser from 'body-parser';
 import UserController from './controllers/User.controller';
+import TeamController from './controllers/Team.controller';
 import handleError from './middlewares/errorHandler';
 
 class App {
@@ -30,6 +31,9 @@ class App {
 
     this.app.post('/login', UserController.login);
     this.app.get('/login/validate', UserController.loginValidate);
+
+    this.app.get('/teams', TeamController.getAll);
+    this.app.get('/teams/:id', TeamController.getById);
 
     this.app.use(handleError);
   }

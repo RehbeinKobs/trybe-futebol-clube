@@ -16,7 +16,7 @@ chai.use(chaiHttp);
 
 const { expect } = chai;
 
-describe('Seu teste', () => {
+describe('User tests', () => {
   it('a rota /login funciona corretamente', async () => {
     sinon.stub(User, 'findOne').resolves(UserMock as User);
     sinon.stub(bcrypt, 'compareSync').callsFake(() => true);
