@@ -40,7 +40,7 @@ const unfilteredQuery = async () => {
 };
 
 export default class MatchService {
-  static async getAll(inProgress: boolean): Promise<MatchDTO[]> {
+  static async getAll(inProgress: boolean | undefined): Promise<MatchDTO[]> {
     if (inProgress !== undefined) {
       const matches = await filteredQuery(inProgress);
       return matches;

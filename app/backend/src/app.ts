@@ -6,6 +6,7 @@ import TeamController from './controllers/Team.controller';
 import MatchController from './controllers/Match.controller';
 import handleError from './middlewares/errorHandler';
 import validateJWT from './middlewares/validateJWT';
+import LeaderboardController from './controllers/Leaderboard.controller';
 
 class App {
   public app: express.Express;
@@ -17,6 +18,23 @@ class App {
 
     // Não remover essa rota
     this.app.get('/', (req, res) => res.json({ ok: true }));
+
+    this.app.post('/login', UserController.login);
+    this.app.get('/login/validate', UserController.loginValidate);
+
+    this.app.get('/teams', TeamController.getAll);
+    this.app.get('/teams/:id', TeamController.getById);
+
+    this.app.get('/matches', MatchController.getAll);
+    this.app.post('/matches', validateJWT, MatchController.create);
+    this.app.patch('/matches/:id/finish', MatchController.finish);
+    this.app.patch('/matches/:id', MatchController.update);
+
+    this.app.get('/leaderboard', LeaderboardController.getAll);
+    this.app.get('/leaderboard/home', LeaderboardController.getAllHome);
+    this.app.get('/leaderboard/away', LeaderboardController.getAllAway);
+
+    this.app.use(handleError);
   }
 
   private config():void {
@@ -30,19 +48,6 @@ class App {
     this.app.use(express.json());
     this.app.use(bodyParser.json());
     this.app.use(accessControl);
-
-    this.app.post('/login', UserController.login);
-    this.app.get('/login/validate', UserController.loginValidate);
-
-    this.app.get('/teams', TeamController.getAll);
-    this.app.get('/teams/:id', TeamController.getById);
-
-    this.app.get('/matches', MatchController.getAll);
-    this.app.post('/matches', validateJWT, MatchController.create);
-    this.app.patch('/matches/:id/finish', MatchController.finish);
-    this.app.patch('/matches/:id', MatchController.update);
-
-    this.app.use(handleError);
   }
 
   public start(PORT: string | number):void {

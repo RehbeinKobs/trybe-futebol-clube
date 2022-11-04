@@ -96,41 +96,4 @@ describe('Match tests', () => {
     expect(response.status).to.be.equal(500);
     expect(response.body.message).to.be.equal('falha');
   });
-  // it('a rota /login falha caso não especificado email ou senha', async () => {
-  //   const response = await chai.request(app).post('/login').send({});
-  //   expect(response.status).to.be.equal(400);
-  //   expect(response.body.message).to.be.equal('All fields must be filled');
-  // });
-  // it('a rota /login falha caso não encontrado o usuario', async () => {
-  //   sinon.restore();
-  //   sinon.stub(User, 'findOne').resolves(null);
-  //   const response = await chai.request(app).post('/login').send(UserMock);
-  //   expect(response.status).to.be.equal(401);
-  //   expect(response.body.message).to.be.equal('Incorrect email or password');
-  // });
-  // it('a rota /login falha caso a senha seja incorreta', async () => {
-  //   sinon.restore();
-  //   sinon.stub(User, 'findOne').resolves(UserMock as User);
-  //   sinon.stub(bcrypt, 'compareSync').callsFake(() => false);
-  //   const response = await chai.request(app).post('/login').send(UserMock);
-  //   expect(response.status).to.be.equal(401);
-  //   expect(response.body.message).to.be.equal('Incorrect email or password');
-  // });
-  // it('a rota /login/validate funciona corretamente', async () => {
-  //   sinon.restore();
-  //   sinon.stub(User, 'findOne').resolves(UserMock as User);
-  //   sinon.stub(jwt, 'verify').callsFake(() => ({ data: UserMock }));
-  //   const response = await chai.request(app).get('/login/validate').set('Authorization', 'token').send();
-  //   expect(response.status).to.be.equal(200);
-  //   expect(response.body).to.include.keys('role');
-  //   expect(response.body.role).to.be.equal('admin');
-  // });
-  // it('a rota /login/validate falha ao não encontrar um user', async () => {
-  //   sinon.restore();
-  //   sinon.stub(User, 'findOne').resolves(null);
-  //   sinon.stub(jwt, 'verify').callsFake(() => ({ data: UserMock }));
-  //   const response = await chai.request(app).get('/login/validate').set('Authorization', 'token').send();
-  //   expect(response.status).to.be.equal(404);
-  //   expect(response.body.message).to.be.equal('User not found');
-  // });
 });
