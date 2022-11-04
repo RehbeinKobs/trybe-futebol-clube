@@ -3,7 +3,9 @@ import * as express from 'express';
 import * as bodyParser from 'body-parser';
 import UserController from './controllers/User.controller';
 import TeamController from './controllers/Team.controller';
+import MatchController from './controllers/Match.controller';
 import handleError from './middlewares/errorHandler';
+import validateJWT from './middlewares/validateJWT';
 
 class App {
   public app: express.Express;
@@ -34,6 +36,11 @@ class App {
 
     this.app.get('/teams', TeamController.getAll);
     this.app.get('/teams/:id', TeamController.getById);
+
+    this.app.get('/matches', MatchController.getAll);
+    this.app.post('/matches', validateJWT, MatchController.create);
+    this.app.patch('/matches/:id/finish', MatchController.finish);
+    this.app.patch('/matches/:id', MatchController.update);
 
     this.app.use(handleError);
   }

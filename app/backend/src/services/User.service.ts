@@ -4,6 +4,11 @@ import createError from '../utils/createError';
 import User from '../database/models/User';
 
 export default class UserService {
+  static async getAll(): Promise<UserDTO[]> {
+    const users = await User.findAll();
+    return users;
+  }
+
   static async getById(id: number): Promise<UserDTO> {
     const user = await User.findOne({ where: { id } });
     if (user) return user.toJSON() as UserDTO;
