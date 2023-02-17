@@ -1,13 +1,28 @@
-# :construction: README customizado em construção ! :construction:
-<!-- Olá, Tryber!
-Esse é apenas um arquivo inicial para o README do seu projeto no qual você pode customizar e reutilizar todas as vezes que for executar o trybe-publisher.
+<p align="middle">Projeto avaliativo do curso de desenvolvimento web da Trybe.</p>
 
-Para deixá-lo com a sua cara, basta alterar o seguinte arquivo da sua máquina: ~/.student-repo-publisher/custom/_NEW_README.md
+# Sobre
 
-É essencial que você preencha esse documento por conta própria, ok?
-Não deixe de usar nossas dicas de escrita de README de projetos, e deixe sua criatividade brilhar!
-:warning: IMPORTANTE: você precisa deixar nítido:
-- quais arquivos/pastas foram desenvolvidos por você; 
-- quais arquivos/pastas foram desenvolvidos por outra pessoa estudante;
-- quais arquivos/pastas foram desenvolvidos pela Trybe.
--->
+O TFC é um website dedicado a fornecer informações atualizadas sobre partidas e classificações de times de futebol.
+
+### Frontend
+
+Uma aplicação React desenvolvida pelo time da Trybe
+
+### Backend
+
+Uma API Rest dockerizada com um banco de dados MySQL
+
+# Como rodar
+### Dependências
+
+- docker
+- npm
+
+### Instalação
+
+Na raiz do projeto rode os comandos
+- <code>npm install</code> para instalar as dependências
+- <code>npm run install:apps</code> para instalar as dependências do frontend e backend
+- <code>npm run compose:up</code> para iniciar os containers
+
+Em seguida, acesse o link <a href="http://localhost:3000/">http://localhost:3000</a>
